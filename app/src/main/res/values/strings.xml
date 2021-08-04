@@ -2,5 +2,6 @@
     <string name="app_name">BusScheduleMaker</string>
     <string name="new_shedule">新規時刻表</string>
     <string name="destination">行き先</string>
-    <string name=""
+    <string name="bus_stop">乗車場所</string>
+    <string name="operational_hour">運行時間</string>
 </resources>
