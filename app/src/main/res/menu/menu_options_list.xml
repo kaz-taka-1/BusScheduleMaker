@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/edit"
+        app:showAsAction="never"
+        android:title="@string/tv_edit"/>
+    <item
+        android:id="@+id/new_schedule"
+        app:showAsAction="never"
+        android:title="@string/tv_new_schedule"/>
+    <item
+        android:id="@+id/schedule_index"
+        app:showAsAction="never"
+        android:title="@string/tv_schedule_index"/>
+    <item
+        android:id="@+id/setting"
+        app:showAsAction="never"
+        android:title="@string/tv_setting"/>
+
+</menu>
