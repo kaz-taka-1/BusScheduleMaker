@@ -4,9 +4,11 @@
     <string name="tv_new_schedule">新規時刻表</string>
     <string name="tv_schedule_index">時刻表一覧</string>
     <string name="tv_setting">設定</string>
+    <string name="tv_title">タイトル</string>
     <string name="tv_destination">行き先</string>
     <string name="tv_bus_stop">乗車場所</string>
     <string name="tv_operational_hour">運行時間</string>
+    <string name="bt_thx_ng">キャンセル</string>
     <string name="bt_thx_ok">OK</string>
 
 </resources>
