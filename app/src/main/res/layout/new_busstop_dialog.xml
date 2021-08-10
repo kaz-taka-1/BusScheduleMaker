@@ -5,6 +5,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="sans-serif"
         android:text="タイトル"/>
 
     <EditText
@@ -20,6 +21,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="sans-serif"
         android:text="行き先"/>
 
     <EditText
@@ -29,12 +31,13 @@
         android:layout_marginTop="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="sans-serif"
         android:hint="@string/et_destination_hint"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:fontFamily="sans-serif"
         android:text="@string/tv_bus_stop"/>
 
     <EditText
@@ -44,8 +47,66 @@
         android:layout_marginTop="4dp"
         android:layout_marginLeft="4dp"
         android:layout_marginRight="4dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="4dp"
         android:fontFamily="sans-serif"
         android:hint="@string/et_bus_stop_hint"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="sans-serif"
+        android:text="@string/tv_operational_hour"/>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/first_train_time"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginRight="4dp"
+            android:fontFamily="sans-serif"
+            android:hint="@string/et_first_train_time_hint"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="32dp"
+            android:fontFamily="sans-serif"
+            android:text="時"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:layout_gravity="center"
+            android:text="~"
+            android:textSize="18sp"/>
+        <EditText
+            android:id="@+id/last_train_time"
+            android:layout_width="32dp"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="sans-serif"
+            android:hint="@string/et_last_train_time_hint"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="時"
+            android:layout_gravity="center"
+            android:textSize="18sp"/>
+
+
+    </LinearLayout>
 
 </LinearLayout>

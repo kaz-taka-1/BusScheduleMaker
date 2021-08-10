@@ -12,6 +12,8 @@
     <string name="tv_bus_stop">乗車場所</string>
     <string name="et_bus_stop_hint">例．駅西口</string>
     <string name="tv_operational_hour">運行時間帯</string>
+    <string name="et_first_train_time_hint">6</string>
+    <string name="et_last_train_time_hint">11</string>
     <string name="bt_thx_ng">キャンセル</string>
     <string name="bt_thx_ok">OK</string>
 
