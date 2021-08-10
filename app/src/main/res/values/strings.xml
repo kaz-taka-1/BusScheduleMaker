@@ -4,10 +4,14 @@
     <string name="tv_new_schedule">新規時刻表</string>
     <string name="tv_schedule_index">時刻表一覧</string>
     <string name="tv_setting">設定</string>
+    //ダイアログ
     <string name="tv_title">タイトル</string>
+    <string name="et_title_hint">例．学校前行き</string>
     <string name="tv_destination">行き先</string>
+    <string name="et_destination_hint">例．学校</string>
     <string name="tv_bus_stop">乗車場所</string>
-    <string name="tv_operational_hour">運行時間</string>
+    <string name="et_bus_stop_hint">例．駅西口</string>
+    <string name="tv_operational_hour">運行時間帯</string>
     <string name="bt_thx_ng">キャンセル</string>
     <string name="bt_thx_ok">OK</string>
 
