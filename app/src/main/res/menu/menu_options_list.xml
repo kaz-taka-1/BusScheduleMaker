@@ -6,7 +6,7 @@
         app:showAsAction="never"
         android:title="@string/tv_edit"/>
     <item
-        android:id="@+id/new_schedule"
+        android:id="@+id/new_schedule_item"
         app:showAsAction="never"
         android:title="@string/tv_new_schedule"/>
     <item
