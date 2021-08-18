@@ -117,31 +117,24 @@
             android:text="テーンプレート作成"/>
 
     </LinearLayout>
-    <TextView
-        android:id="@+id/a"
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/inputLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"/>
-    <TextView
-        android:id="@+id/b"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"/>
-    <TextView
-        android:id="@+id/c"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"/>
-    <TextView
-        android:id="@+id/d"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"/>
-    <TextView
-        android:id="@+id/e"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"/>
+        android:layout_height="match_parent"
+        android:stretchColumns="1">
+    <TableRow>
+        <TextView
+            android:id="@+id/hour"
+            android:padding="3dip"
+            android:text="1"/>
+        <TextView
+            android:id="@+id/minute"
+            android:gravity="right"
+            android:padding="3dip"
+            android:text="1,2,3,4,5"/>
+    </TableRow>
+    </TableLayout>
 
 
 

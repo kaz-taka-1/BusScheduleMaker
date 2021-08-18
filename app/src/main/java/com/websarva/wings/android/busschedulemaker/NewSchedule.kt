@@ -5,10 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.EditText
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 
 class NewSchedule : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +28,20 @@ class NewSchedule : AppCompatActivity() {
             val etBusStop = findViewById<EditText>(R.id.bus_stop).text.toString()
             val etFirstTrainTime = findViewById<EditText>(R.id.first_train_time)
             val etLastTrainTime = findViewById<EditText>(R.id.last_train_time)
+            val inputLayout = findViewById<LinearLayout>(R.id.inputLayout)
 
+            val tableLayout = TableLayout(applicationContext).also {
+
+                // 1行目
+                val tableRow1 = TableRow(applicationContext).also {
+                    //android:background="#000000"
+                    val button1_1 = Button(applicationContext)
+                    button1_1.text = "1-1"
+                    it.addView(button1_1)
+                }
+                it.addView(tableRow1)
+            }
+            setContentView(tableLayout)
         }
 
     }
