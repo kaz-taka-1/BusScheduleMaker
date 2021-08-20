@@ -15,10 +15,6 @@ class NewSchedule : AppCompatActivity() {
         val bt1 = findViewById<Button>(R.id.bt1)
         bt1.setOnClickListener(screencreate())
 
-        //val wrapContent = ViewGroup.LayoutParams.WRAP_CONTENT
-        //val linearLayout = findViewById<LinearLayout>(R.id.newshedule)
-        //val editText = EditText(applicationContext)
-        //linearLayout.addView(editText, LinearLayout.LayoutParams(wrapContent,wrapContent))
 
     }
     //ボタンクリック
@@ -27,37 +23,20 @@ class NewSchedule : AppCompatActivity() {
             val etTitle = findViewById<EditText>(R.id.title).text.toString()
             val etDestination = findViewById<EditText>(R.id.destination).text.toString()
             val etBusStop = findViewById<EditText>(R.id.bus_stop).text.toString()
-            val etFirstTrainTime = findViewById<EditText>(R.id.first_train_time)
-            val etLastTrainTime = findViewById<EditText>(R.id.last_train_time)
+            val etFirstTrainTime = findViewById<EditText>(R.id.first_train_time).text.toString().toInt()
+            val etLastTrainTime = findViewById<EditText>(R.id.last_train_time).text.toString().toInt()
             val newScheduleLinearLayout = findViewById<View>(R.id.newScheduleLayout)
-            //val inputLayout = findViewById<View>(R.id.inputLayout) as ViewGroup
 
-
-            val vg = findViewById<View>(R.id.newScheduleLayout) as ViewGroup
-            for (i in 0 until 5 ) {
-                getLayoutInflater().inflate(R.layout.input_layout, vg)
-                val tr = vg.getChildAt(i) as TableRow;
-                //textviewに文字を格納
+            val tableLayout = findViewById<View>(R.id.newScheduleLayout) as ViewGroup
+            tableLayout.removeAllViews()
+            var count = 0
+            for (i in  etFirstTrainTime until (etLastTrainTime + 1) ) {
+                getLayoutInflater().inflate(R.layout.input_layout, tableLayout)
+                val tr = tableLayout.getChildAt(count) as TableRow
                 ((tr.getChildAt(0)) as TextView).setText(i.toString())
-                //buttonの動的追加と押されたときの処理の記載
-                ((tr.getChildAt(1)) as TextView)?.setText(i.toString())
+                ((tr.getChildAt(1)) as EditText)
+                count++
             }
-            /*val tableLayout = TableLayout(applicationContext).also {
-                //tableLayout.setBackgroundColor(Color.parseColor("#4CAF50"))
-                val tableRow1 = TableRow(applicationContext).also {
-                    //android:background="#000000"
-                    val textView = TextView(applicationContext)
-                    textView.text = etTitle
-                    val editView = EditText(applicationContext)
-                    //editView.text = etDestination
-                    it.addView(textView)
-                    it.addView(editView)
-                }
-                newScheduleLinearLayout.addView(tableRow1)
-            //}*/
-            //getLayoutInflater().inflate(R.layout.table, inputLayout)
-            //newScheduleLinearLayout.addView(inputLayout,)
-
         }
 
     }

@@ -14,16 +14,18 @@
         android:layout_marginBottom="1dp"
         android:layout_marginTop="1dp"/>
 
-    <TextView
+    <EditText
         android:id="@+id/rowtext2"
         android:layout_width="match_parent"
         android:layout_height="46dp"
-        android:layout_marginLeft="1dp"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
         android:layout_marginBottom="1dp"
         android:layout_marginTop="1dp"
+        android:inputType="phone"
         android:background="@color/purple_200"
         android:gravity="center"
-        android:text="0"
+        android:hint="例．5,15,21,32,55（カンマを売ってから次の時刻を入力）"
         android:textSize="18sp"
         android:textColor="@color/white" />
 
