@@ -1,6 +1,7 @@
 package com.websarva.wings.android.busschedulemaker
 
 import android.content.Intent
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -28,20 +29,35 @@ class NewSchedule : AppCompatActivity() {
             val etBusStop = findViewById<EditText>(R.id.bus_stop).text.toString()
             val etFirstTrainTime = findViewById<EditText>(R.id.first_train_time)
             val etLastTrainTime = findViewById<EditText>(R.id.last_train_time)
-            val inputLayout = findViewById<LinearLayout>(R.id.inputLayout)
+            val newScheduleLinearLayout = findViewById<View>(R.id.newScheduleLayout)
+            //val inputLayout = findViewById<View>(R.id.inputLayout) as ViewGroup
 
-            val tableLayout = TableLayout(applicationContext).also {
 
-                // 1行目
+            val vg = findViewById<View>(R.id.newScheduleLayout) as ViewGroup
+            for (i in 0 until 5 ) {
+                getLayoutInflater().inflate(R.layout.input_layout, vg)
+                val tr = vg.getChildAt(i) as TableRow;
+                //textviewに文字を格納
+                ((tr.getChildAt(0)) as TextView).setText(i.toString())
+                //buttonの動的追加と押されたときの処理の記載
+                ((tr.getChildAt(1)) as TextView)?.setText(i.toString())
+            }
+            /*val tableLayout = TableLayout(applicationContext).also {
+                //tableLayout.setBackgroundColor(Color.parseColor("#4CAF50"))
                 val tableRow1 = TableRow(applicationContext).also {
                     //android:background="#000000"
-                    val button1_1 = Button(applicationContext)
-                    button1_1.text = "1-1"
-                    it.addView(button1_1)
+                    val textView = TextView(applicationContext)
+                    textView.text = etTitle
+                    val editView = EditText(applicationContext)
+                    //editView.text = etDestination
+                    it.addView(textView)
+                    it.addView(editView)
                 }
-                it.addView(tableRow1)
-            }
-            setContentView(tableLayout)
+                newScheduleLinearLayout.addView(tableRow1)
+            //}*/
+            //getLayoutInflater().inflate(R.layout.table, inputLayout)
+            //newScheduleLinearLayout.addView(inputLayout,)
+
         }
 
     }

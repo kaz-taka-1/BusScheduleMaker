@@ -1,18 +1,30 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<TableRow xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:stretchColumns="1"
-    android:background="#000000">
-    <TableRow>
-        <TextView
-            android:id="@+id/hour"
-            android:padding="3dip" />
-        <TextView
-            android:id="@+id/minute"
-            android:gravity="right"
-            android:padding="3dip" />
-    </TableRow>
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
+    <TextView
+        android:layout_width="25dp"
+        android:layout_height="46dp"
+        android:background="@color/purple_500"
+        android:gravity="center_horizontal|center"
+        android:text="11"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginTop="1dp"/>
 
-</TableLayout>
+    <TextView
+        android:id="@+id/rowtext2"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginBottom="1dp"
+        android:layout_marginTop="1dp"
+        android:background="@color/purple_200"
+        android:gravity="center"
+        android:text="0"
+        android:textSize="18sp"
+        android:textColor="@color/white" />
+
+</TableRow>
