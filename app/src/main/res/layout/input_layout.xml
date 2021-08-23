@@ -25,7 +25,7 @@
         android:inputType="phone"
         android:background="@color/purple_200"
         android:gravity="center"
-        android:hint="例．5,15,21,32,55（カンマを売ってから次の時刻を入力）"
+        android:hint="例．5,15,21,32,55（カンマを打ってから次の時刻を入力）"
         android:textSize="18sp"
         android:textColor="@color/white" />
 

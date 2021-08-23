@@ -138,6 +138,13 @@
         android:stretchColumns="1">
 
     </TableLayout>
+    <Button
+        android:id="@+id/bt_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="保存"
+        />
 
 
 
