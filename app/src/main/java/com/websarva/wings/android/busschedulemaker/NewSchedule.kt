@@ -48,11 +48,27 @@ class NewSchedule : AppCompatActivity() {
 
     fun pnSaveButtonClick(view: View){
         val etTitle = findViewById<EditText>(R.id.title)
+        val title = etTitle.text.toString()
         val etDestination = findViewById<EditText>(R.id.destination)
-        val etBusStop = findViewById<EditText>(R.id.bus_stop).text.toString()
-        val etFirstTrainTime = findViewById<EditText>(R.id.first_train_time).text.toString()
-        val etLastTrainTime = findViewById<EditText>(R.id.last_train_time).text.toString()
-        val btnSave = findViewById<Button>(R.id.btnSave)
+        val destination = etDestination.text.toString()
+        val etBusStop = findViewById<EditText>(R.id.bus_stop)
+        val busStop = etBusStop.text.toString()
+        val etFirstTrainTime = findViewById<EditText>(R.id.first_train_time)
+        val firstTrainTime = etFirstTrainTime.text.toString().toLong()
+        val etLastTrainTime = findViewById<EditText>(R.id.last_train_time)
+        val lastTrainTime = etLastTrainTime.text.toString().toLong()
+
+        val db = _helper.writableDatabase
+
+        val sqlIntent ="INSERT INTO busschedules (_id, title, destination, busStop, firstTrainTime, lastTrainTime) VALUES(?,?,?,?,?,?)"
+        val stmt = db.compileStatement(sqlIntent)
+        stmt.bindString(2,title)
+        stmt.bindString(3,destination)
+        stmt.bindString(4,busStop)
+        stmt.bindLong(5,firstTrainTime)
+        stmt.bindLong(6,lastTrainTime)
+        stmt.executeInsert()
+
     }
 
 
