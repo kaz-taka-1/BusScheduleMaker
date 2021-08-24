@@ -120,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="36dp"
-            android:text="テーンプレート作成"/>
+            android:text="時刻入力欄作成"/>
 
     </LinearLayout>
     <TableLayout
@@ -139,10 +139,11 @@
 
     </TableLayout>
     <Button
-        android:id="@+id/bt_save"
+        android:id="@+id/btnSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:onClick="onSaveButtonClick"
         android:text="保存"
         />
 

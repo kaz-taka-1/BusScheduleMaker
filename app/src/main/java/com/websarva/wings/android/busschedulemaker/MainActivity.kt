@@ -45,5 +45,4 @@ class MainActivity : AppCompatActivity() {
         return returnVal
     }
 
-
 }

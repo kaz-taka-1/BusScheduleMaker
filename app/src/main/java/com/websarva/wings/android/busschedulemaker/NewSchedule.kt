@@ -9,15 +9,21 @@ import android.view.ViewGroup
 import android.widget.*
 
 class NewSchedule : AppCompatActivity() {
+
+    private val _helper = DatabaseHelper(this@NewSchedule)
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_schedule)
         val bt1 = findViewById<Button>(R.id.bt1)
         bt1.setOnClickListener(screencreate())
-
-
     }
-    //ボタンクリック
+
+    override fun onDestroy() {
+        _helper.close()
+        super.onDestroy()
+    }
+    //時刻入力欄作成ボタンをクリックした時の処理の記述
     private inner class screencreate(): View.OnClickListener{
         override fun onClick(view: View?) {
             val etTitle = findViewById<EditText>(R.id.title).text.toString()
@@ -38,10 +44,16 @@ class NewSchedule : AppCompatActivity() {
                 count++
             }
         }
-
     }
 
-    //時刻表の自動作成
+    fun pnSaveButtonClick(view: View){
+        val etTitle = findViewById<EditText>(R.id.title)
+        val etDestination = findViewById<EditText>(R.id.destination)
+        val etBusStop = findViewById<EditText>(R.id.bus_stop).text.toString()
+        val etFirstTrainTime = findViewById<EditText>(R.id.first_train_time).text.toString()
+        val etLastTrainTime = findViewById<EditText>(R.id.last_train_time).text.toString()
+        val btnSave = findViewById<Button>(R.id.btnSave)
+    }
 
 
 }
