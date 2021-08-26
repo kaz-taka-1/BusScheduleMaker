@@ -7,11 +7,12 @@ import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.view.ViewCompat
 
 class NewSchedule : AppCompatActivity() {
 
     private val _helper = DatabaseHelper(this@NewSchedule)
-
+    var editTextIds:MutableList<Int> = mutableListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_schedule)
@@ -39,11 +40,16 @@ class NewSchedule : AppCompatActivity() {
             val tableLayout = findViewById<View>(R.id.newScheduleLayout) as ViewGroup
             tableLayout.removeAllViews()
             var count = 0
+            editTextIds = mutableListOf()
             for (i in  etFirstTrainTime until (etLastTrainTime + 1) ) {
-                getLayoutInflater().inflate(R.layout.input_layout, tableLayout)
+                val view = getLayoutInflater().inflate(R.layout.input_layout, tableLayout)
                 val tr = tableLayout.getChildAt(count) as TableRow
-                ((tr.getChildAt(0)) as TextView).setText(i.toString())
-                ((tr.getChildAt(1)) as EditText)
+                var tvHour = ((tr.getChildAt(0)) as TextView)
+                tvHour.setText(i.toString())
+                var evMinute = ((tr.getChildAt(1)) as EditText)
+                val minute = view.findViewById<EditText>(R.id.minute)
+                editTextIds.add(ViewCompat.generateViewId())
+                minute.setId(editTextIds[count])
                 count++
             }
         }
@@ -61,30 +67,37 @@ class NewSchedule : AppCompatActivity() {
             val etLastTrainTime = findViewById<EditText>(R.id.last_train_time)
             val lastTrainTime = etLastTrainTime.text.toString().toLong()
 
-            val db = _helper.writableDatabase
 
+            val db = _helper.writableDatabase
             val sqlInsert =
-                "INSERT INTO busschedules (_id, title, destination, busStop, firstTrainTime, lastTrainTime, 1 ,2) VALUES(?,?,?,?,?,?)"
+                "INSERT INTO busschedules (_id, title, destination, busStop, firstTrainTime, lastTrainTime) VALUES(?,?,?,?,?,?)"
             val stmt = db.compileStatement(sqlInsert)
             stmt.bindString(2, title)
             stmt.bindString(3, destination)
             stmt.bindString(4, busStop)
             stmt.bindLong(5, firstTrainTime)
             stmt.bindLong(6, lastTrainTime)
-            stmt.bindLong(6, lastTrainTime)
             val executeInsert = stmt.executeInsert()
 
-            /*val sql2Insert =
-                "INSERT INTO busschedules (_id, 1, 2, 3, 4, 5, 6 , 7, 8, 9, 10, 11, 12, 13, 14, 15 , 16, 17, 18, 19, 20, 21, 22, 23, 24) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
+            val intFTT = firstTrainTime.toInt()
+            val intLTT = lastTrainTime.toInt()
+            val minutes:MutableList<String> = mutableListOf()
+            var count = 0
+            for (i in  intFTT until (intLTT + 1) ) {
+                val minute = findViewById<EditText>(editTextIds[count])
+                minutes.add(minute.text.toString())
+                count++
+            }
+            val sql2Insert =
+                "INSERT INTO timetable (_id, o1, o2, o3, o4, o5, o6 , o7, o8, o9, o10, o11, o12, o13, o14, o15, o16, o17, o18, o19, o20, o21, o22, o23, o24) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
             val stmt2 = db.compileStatement(sql2Insert)
-            stmt2.bindString(2, title)
-            stmt2.bindString(3, destination)
-            stmt2.bindString(4, busStop)
-            stmt2.bindLong(5, firstTrainTime)
-            stmt2.bindLong(6, lastTrainTime)
-            stmt2.bindLong(6, lastTrainTime)
-            stmt2.executeInsert()*/
 
+            count = 0
+            for (i in  intFTT until (intLTT + 1) ) {
+                stmt2.bindString(i, minutes[count])
+                count++
+            }
+            stmt2.executeInsert()
             finish()
         }
     }

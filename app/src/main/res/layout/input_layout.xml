@@ -4,6 +4,7 @@
     android:background="@color/white">
 
     <TextView
+        android:id="@+id/hour"
         android:layout_width="25dp"
         android:layout_height="46dp"
         android:background="@color/purple_500"
@@ -15,7 +16,7 @@
         android:layout_marginTop="1dp"/>
 
     <EditText
-        android:id="@+id/rowtext2"
+        android:id="@+id/minute"
         android:layout_width="match_parent"
         android:layout_height="46dp"
         android:layout_marginLeft="2dp"
