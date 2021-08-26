@@ -21,6 +21,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
         sb.append("lastTrainTime TEXT")
         sb.append(");")
         val sql = sb.toString()
+        db.execSQL(sql)
 
         val sb2 = StringBuilder()
         sb2.append("CREATE TABLE timetable (")
@@ -31,7 +32,7 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
         sb2.append("o4 TEXT,")
         sb2.append("o5 TEXT,")
         sb2.append("o6 TEXT,")
-        sb2.append("07 TEXT,")
+        sb2.append("o7 TEXT,")
         sb2.append("o8 TEXT,")
         sb2.append("o9 TEXT,")
         sb2.append("o10 TEXT,")
@@ -49,10 +50,10 @@ class DatabaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_NAME,
         sb2.append("o22 TEXT,")
         sb2.append("o23 TEXT,")
         sb2.append("o24 TEXT")
-        sb.append(");")
+        sb2.append(");")
         val sql2 = sb2.toString()
 
-        db.execSQL(sql)
+
         db.execSQL(sql2)
 
     }

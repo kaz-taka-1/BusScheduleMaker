@@ -42,10 +42,10 @@ class MainActivity : AppCompatActivity() {
             destination = cursor.getString(idxDestination)
             val idxBusStop = cursor.getColumnIndex("busStop")
             busStop = cursor.getString(idxBusStop)
-            /*val idxFirstTrainTime = cursor.getColumnIndex("firstTrainTime")
+            val idxFirstTrainTime = cursor.getColumnIndex("firstTrainTime")
             firstTrainTime = cursor.getString(idxFirstTrainTime)
             val idxLastTrainTime = cursor.getColumnIndex("lastTrainTime")
-            lastTrainTime = cursor.getString(idxLastTrainTime)*/
+            lastTrainTime = cursor.getString(idxLastTrainTime)
 
         }
         val tvTitle = findViewById<TextView>(R.id.tvTitle)
