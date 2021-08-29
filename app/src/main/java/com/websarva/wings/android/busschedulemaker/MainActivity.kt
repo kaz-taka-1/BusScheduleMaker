@@ -4,11 +4,13 @@ import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
+import androidx.core.view.ViewCompat
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,8 +34,8 @@ class MainActivity : AppCompatActivity() {
         var title = ""
         var destination = ""
         var busStop = ""
-        var firstTrainTime = ""
-        var lastTrainTime = ""
+        var firstTrainTime = 0
+        var lastTrainTime = 0
 
         while(cursor.moveToNext()){
             val idxTitle = cursor.getColumnIndex("title")
@@ -43,10 +45,9 @@ class MainActivity : AppCompatActivity() {
             val idxBusStop = cursor.getColumnIndex("busStop")
             busStop = cursor.getString(idxBusStop)
             val idxFirstTrainTime = cursor.getColumnIndex("firstTrainTime")
-            firstTrainTime = cursor.getString(idxFirstTrainTime)
+            firstTrainTime = cursor.getInt(idxFirstTrainTime)
             val idxLastTrainTime = cursor.getColumnIndex("lastTrainTime")
-            lastTrainTime = cursor.getString(idxLastTrainTime)
-
+            lastTrainTime = cursor.getInt(idxLastTrainTime)
         }
         val tvTitle = findViewById<TextView>(R.id.tvTitle)
         tvTitle.setText(title)
@@ -54,6 +55,41 @@ class MainActivity : AppCompatActivity() {
         tvDestination.setText(destination)
         val tvBusStop = findViewById<TextView>(R.id.tvBusStop)
         tvBusStop.setText(busStop)
+        val tableLayout = findViewById<View>(R.id.newScheduleLayout) as ViewGroup
+        tableLayout.removeAllViews()
+        var count = 0
+
+        var timeTableId = busScheduleId
+        val sql2 = "SELECT * FROM timetable WHERE _id = ${timeTableId}"
+        val cursor2 =db.rawQuery(sql2,null)
+        val minutes:MutableList<String> = mutableListOf()
+        minutes.add("0")
+        var minute = ""
+
+        while (cursor2.moveToNext()) {
+            for(i in 1 until 24) {
+                val clock = "o" + i.toString()
+                minute = ""
+                val idxminute = cursor2.getColumnIndex(clock)
+                minute = cursor2.getString(idxminute)
+                minutes.add(minute)
+            }
+        }
+
+        for (i in  firstTrainTime until (lastTrainTime + 1) ) {
+            val view = getLayoutInflater().inflate(R.layout.output_layout, tableLayout)
+            val tr = tableLayout.getChildAt(count) as TableRow
+            var tvHour = ((tr.getChildAt(0)) as TextView)
+            tvHour.setText(i.toString())
+            val evMinute = ((tr.getChildAt(1)) as TextView)
+            val tvminute = view.findViewById<TextView>(R.id.tvminute)
+            tvminute.setText(minutes[i])
+            tvminute.setId(ViewCompat.generateViewId())
+            count++
+        }
+
+
+
 
     }
 

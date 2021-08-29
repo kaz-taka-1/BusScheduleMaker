@@ -35,7 +35,6 @@ class NewSchedule : AppCompatActivity() {
             val etBusStop = findViewById<EditText>(R.id.bus_stop).text.toString()
             val etFirstTrainTime = findViewById<EditText>(R.id.first_train_time).text.toString().toInt()
             val etLastTrainTime = findViewById<EditText>(R.id.last_train_time).text.toString().toInt()
-            val newScheduleLinearLayout = findViewById<View>(R.id.newScheduleLayout)
 
             val tableLayout = findViewById<View>(R.id.newScheduleLayout) as ViewGroup
             tableLayout.removeAllViews()
@@ -88,16 +87,18 @@ class NewSchedule : AppCompatActivity() {
                 minutes.add(minute.text.toString())
                 count++
             }
+
             val sql2Insert =
                 "INSERT INTO timetable (_id, o1, o2, o3, o4, o5, o6 , o7, o8, o9, o10, o11, o12, o13, o14, o15, o16, o17, o18, o19, o20, o21, o22, o23, o24) VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)"
             val stmt2 = db.compileStatement(sql2Insert)
 
             count = 0
             for (i in  intFTT until (intLTT + 1) ) {
-                stmt2.bindString(i, minutes[count])
+                stmt2.bindString(i+1, minutes[count])
                 count++
             }
             stmt2.executeInsert()
+
             finish()
         }
     }

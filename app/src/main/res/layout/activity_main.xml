@@ -54,7 +54,11 @@
                 android:fontFamily="sans-serif"
                 android:textSize="18sp"/>
         </LinearLayout>
-
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity">
         <TableLayout
             android:id="@+id/newScheduleLayout"
             android:layout_width="match_parent"
@@ -70,6 +74,7 @@
             android:stretchColumns="1">
 
         </TableLayout>
+        </ScrollView>
     </LinearLayout>
 
 </LinearLayout>
