@@ -8,7 +8,7 @@
         android:layout_width="25dp"
         android:layout_height="46dp"
         android:background="@color/purple_500"
-        android:gravity="center_horizontal|center"
+        android:gravity="center_vertical|center"
         android:text="11"
         android:textColor="@color/white"
         android:textSize="18sp"
@@ -25,8 +25,8 @@
         android:layout_marginTop="1dp"
         android:inputType="phone"
         android:background="@color/purple_200"
-        android:gravity="center"
-        android:hint="例．5,15,21,32,55（カンマを打ってから次の時刻を入力）"
+        android:gravity="center_vertical|left"
+        android:hint="ここに時刻を入力"
         android:textSize="18sp"
         android:textColor="@color/white" />
 
