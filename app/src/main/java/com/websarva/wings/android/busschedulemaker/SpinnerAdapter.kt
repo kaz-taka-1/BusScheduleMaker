@@ -39,4 +39,5 @@ class SpinnerAdapter(context: Context,spinnerItem: Int, ids:MutableList<String>,
 
         return view
     }
+
 }
