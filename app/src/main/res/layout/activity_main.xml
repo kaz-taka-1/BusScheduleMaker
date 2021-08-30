@@ -12,9 +12,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_gravity = "center"
             android:fontFamily="sans-serif"
-            android:entries="@array/titlelist"
-            android:textSize="18sp"/>
+            android:textSize="24sp"/>
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"

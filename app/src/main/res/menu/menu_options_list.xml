@@ -9,13 +9,5 @@
         android:id="@+id/new_schedule_item"
         app:showAsAction="never"
         android:title="@string/tv_new_schedule"/>
-    <item
-        android:id="@+id/schedule_index"
-        app:showAsAction="never"
-        android:title="@string/tv_schedule_index"/>
-    <item
-        android:id="@+id/setting"
-        app:showAsAction="never"
-        android:title="@string/tv_setting"/>
 
 </menu>

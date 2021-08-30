@@ -107,24 +107,33 @@ class MainActivity : AppCompatActivity() {
     }
     private fun createSpinner(db:SQLiteDatabase){
         val recodeCount = DatabaseUtils.queryNumEntries(db, "busschedules")
-        //val splist: MutableList<String> = mutableListOf()
-        val splist: ArrayList<String> = ArrayList()
+        val splist2: MutableList<MutableMap<String,String>> = mutableListOf()
         var title = ""
+        var id =""
+        val titles:MutableList<String> = mutableListOf()
+        val ids:MutableList<String> = mutableListOf()
         for (i in 1 until recodeCount+1) {
             val sql1 = "SELECT * FROM busschedules WHERE _id = ${i}"
             val cursor1 =db.rawQuery(sql1,null)
             while(cursor1.moveToNext()) {
+                val idnum = cursor1.getColumnIndex("_id")
                 val idxTitle = cursor1.getColumnIndex("title")
                 title = cursor1.getString(idxTitle)
-                splist.add(title)
-                Log.i("table", splist.toString())
+                id = cursor1.getString(idnum)
+                titles.add(title)
+                ids.add(id)
+                //var splist= mutableMapOf("id" to id.toString(),"title" to title)
+                //splist2.add(splist)
+                Log.i("table", titles.toString())
+                Log.i("table", ids.toString())
             }
         }
 
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, splist);
+        val adapter = SpinnerAdapter(this.getApplicationContext(),
+            R.layout.spinner_item, ids,titles);
 
-        val spn = findViewById<Spinner>(R.id.tvTitle) as Spinner
-        spn.adapter = adapter
+        val tvTitle = findViewById<Spinner>(R.id.tvTitle) as Spinner
+        tvTitle.adapter = adapter
     }
 
 

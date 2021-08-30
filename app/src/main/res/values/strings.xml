@@ -16,10 +16,5 @@
     <string name="et_last_train_time_hint">11</string>
     <string name="bt_thx_ng">キャンセル</string>
     <string name="bt_thx_ok">OK</string>
-    <string-array name="titlelist">
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-    </string-array>
 
 </resources>
