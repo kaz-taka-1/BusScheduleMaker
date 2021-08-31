@@ -32,36 +32,46 @@ class NewSchedule : AppCompatActivity() {
     private inner class screencreate(): View.OnClickListener{
         override fun onClick(view: View?) {
             val etTitle = findViewById<EditText>(R.id.title)
-            val title = etTitle.getText()
+            val title = etTitle.getText().toString()
             val etDestination = findViewById<EditText>(R.id.destination)
-            val destination = etDestination.getText()
+            val destination = etDestination.getText().toString()
             val etBusStop = findViewById<EditText>(R.id.bus_stop)
-            val busStop = etBusStop.getText()
+            val busStop = etBusStop.getText().toString()
             val etFirstTrainTime = findViewById<EditText>(R.id.first_train_time)
-            val firstTrainTime = etFirstTrainTime.getText()
+            val firstTrainTime = etFirstTrainTime.getText().toString()
             val etLastTrainTime = findViewById<EditText>(R.id.last_train_time)
-            val lastTrainTime = etLastTrainTime.getText()
-            if(title.toString() == "" || destination.toString() == "" || busStop.toString() == "" || firstTrainTime.toString() == "" || lastTrainTime.toString() == "" ) {
-                Toast.makeText(this@NewSchedule,R.string.errormessage1,Toast.LENGTH_LONG).show()
+            val lastTrainTime = etLastTrainTime.getText().toString()
 
+            if(title == "" || destination == "" || busStop == "" || firstTrainTime == "" || lastTrainTime == "" ) {
+                Toast.makeText(this@NewSchedule,R.string.errormessage1,Toast.LENGTH_SHORT).show()
             }else{
-                val tableLayout = findViewById<View>(R.id.newScheduleLayout) as ViewGroup
-                tableLayout.removeAllViews()
-                var count = 0
-                editTextIds = mutableListOf()
-                for (i in etFirstTrainTime.text.toString().toInt() until (etLastTrainTime.text.toString().toInt() + 1)) {
-                    val view = getLayoutInflater().inflate(R.layout.input_layout, tableLayout)
-                    val tr = tableLayout.getChildAt(count) as TableRow
-                    var tvHour = ((tr.getChildAt(0)) as TextView)
-                    tvHour.setText(i.toString())
-                    var evMinute = ((tr.getChildAt(1)) as EditText)
-                    val minute = view.findViewById<EditText>(R.id.minute)
-                    editTextIds.add(ViewCompat.generateViewId())
-                    minute.setId(editTextIds[count])
-                    count++
+                if(0 < firstTrainTime.toInt() && lastTrainTime.toInt() < 25) {
+                    if (firstTrainTime.toInt() < lastTrainTime.toInt()) {
+                        val tableLayout = findViewById<View>(R.id.newScheduleLayout) as ViewGroup
+                        tableLayout.removeAllViews()
+                        var count = 0
+                        editTextIds = mutableListOf()
+                        for (i in etFirstTrainTime.text.toString()
+                            .toInt() until (etLastTrainTime.text.toString().toInt() + 1)) {
+                            val view =
+                                getLayoutInflater().inflate(R.layout.input_layout, tableLayout)
+                            val tr = tableLayout.getChildAt(count) as TableRow
+                            var tvHour = ((tr.getChildAt(0)) as TextView)
+                            tvHour.setText(i.toString())
+                            var evMinute = ((tr.getChildAt(1)) as EditText)
+                            val minute = view.findViewById<EditText>(R.id.minute)
+                            editTextIds.add(ViewCompat.generateViewId())
+                            minute.setId(editTextIds[count])
+                            count++
+                        }
+                        val btnSave = findViewById<Button>(R.id.btnSave)
+                        btnSave.isEnabled = true
+                    }else{
+                        Toast.makeText(this@NewSchedule,R.string.errormessage3,Toast.LENGTH_SHORT).show()
+                    }
+                }else{
+                    Toast.makeText(this@NewSchedule,R.string.errormessage2,Toast.LENGTH_SHORT).show()
                 }
-                val btnSave = findViewById<Button>(R.id.btnSave)
-                btnSave.isEnabled = true
             }
         }
     }
