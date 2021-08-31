@@ -41,6 +41,10 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this@MainActivity,NewSchedule::class.java)
                 startActivity(intent)
             }
+            R.id.edit -> {
+                val intent = Intent(this@MainActivity,EditSchedule::class.java)
+                startActivity(intent)
+            }
         }
         return returnVal
     }
