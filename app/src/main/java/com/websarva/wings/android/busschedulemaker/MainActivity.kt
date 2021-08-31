@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity() {
         return returnVal
     }
 
-    class ItemSelectedListener(context: Context,view1:View) :AdapterView.OnItemSelectedListener {
+    private class ItemSelectedListener(context: Context,view1:View) :AdapterView.OnItemSelectedListener {
         val context = context
         val view1 = view1
         var busScheduleId = 1

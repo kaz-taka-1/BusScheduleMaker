@@ -16,5 +16,6 @@
     <string name="et_last_train_time_hint">11</string>
     <string name="bt_thx_ng">キャンセル</string>
     <string name="bt_thx_ok">OK</string>
+    <string name="errormessage1">空欄があります。</string>
 
 </resources>

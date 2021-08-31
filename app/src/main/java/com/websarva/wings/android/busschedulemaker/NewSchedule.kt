@@ -4,6 +4,7 @@ import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
@@ -30,26 +31,37 @@ class NewSchedule : AppCompatActivity() {
     //時刻入力欄作成ボタンをクリックした時の処理の記述
     private inner class screencreate(): View.OnClickListener{
         override fun onClick(view: View?) {
-            val etTitle = findViewById<EditText>(R.id.title).text.toString()
-            val etDestination = findViewById<EditText>(R.id.destination).text.toString()
-            val etBusStop = findViewById<EditText>(R.id.bus_stop).text.toString()
-            val etFirstTrainTime = findViewById<EditText>(R.id.first_train_time).text.toString().toInt()
-            val etLastTrainTime = findViewById<EditText>(R.id.last_train_time).text.toString().toInt()
+            val etTitle = findViewById<EditText>(R.id.title)
+            val title = etTitle.getText()
+            val etDestination = findViewById<EditText>(R.id.destination)
+            val destination = etDestination.getText()
+            val etBusStop = findViewById<EditText>(R.id.bus_stop)
+            val busStop = etBusStop.getText()
+            val etFirstTrainTime = findViewById<EditText>(R.id.first_train_time)
+            val firstTrainTime = etFirstTrainTime.getText()
+            val etLastTrainTime = findViewById<EditText>(R.id.last_train_time)
+            val lastTrainTime = etLastTrainTime.getText()
+            if(title.toString() == "" || destination.toString() == "" || busStop.toString() == "" || firstTrainTime.toString() == "" || lastTrainTime.toString() == "" ) {
+                Toast.makeText(this@NewSchedule,R.string.errormessage1,Toast.LENGTH_LONG).show()
 
-            val tableLayout = findViewById<View>(R.id.newScheduleLayout) as ViewGroup
-            tableLayout.removeAllViews()
-            var count = 0
-            editTextIds = mutableListOf()
-            for (i in  etFirstTrainTime until (etLastTrainTime + 1) ) {
-                val view = getLayoutInflater().inflate(R.layout.input_layout, tableLayout)
-                val tr = tableLayout.getChildAt(count) as TableRow
-                var tvHour = ((tr.getChildAt(0)) as TextView)
-                tvHour.setText(i.toString())
-                var evMinute = ((tr.getChildAt(1)) as EditText)
-                val minute = view.findViewById<EditText>(R.id.minute)
-                editTextIds.add(ViewCompat.generateViewId())
-                minute.setId(editTextIds[count])
-                count++
+            }else{
+                val tableLayout = findViewById<View>(R.id.newScheduleLayout) as ViewGroup
+                tableLayout.removeAllViews()
+                var count = 0
+                editTextIds = mutableListOf()
+                for (i in etFirstTrainTime.text.toString().toInt() until (etLastTrainTime.text.toString().toInt() + 1)) {
+                    val view = getLayoutInflater().inflate(R.layout.input_layout, tableLayout)
+                    val tr = tableLayout.getChildAt(count) as TableRow
+                    var tvHour = ((tr.getChildAt(0)) as TextView)
+                    tvHour.setText(i.toString())
+                    var evMinute = ((tr.getChildAt(1)) as EditText)
+                    val minute = view.findViewById<EditText>(R.id.minute)
+                    editTextIds.add(ViewCompat.generateViewId())
+                    minute.setId(editTextIds[count])
+                    count++
+                }
+                val btnSave = findViewById<Button>(R.id.btnSave)
+                btnSave.isEnabled = true
             }
         }
     }
