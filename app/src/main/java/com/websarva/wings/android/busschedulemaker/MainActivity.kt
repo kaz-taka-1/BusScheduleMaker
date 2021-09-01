@@ -13,7 +13,6 @@ import androidx.core.view.ViewCompat
 
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -42,14 +41,17 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             R.id.edit -> {
+                val id = findViewById<TextView>(R.id.tvIdItem)
+                val busScheduleId = id.text.toString().toInt()
                 val intent = Intent(this@MainActivity,EditSchedule::class.java)
+                intent.putExtra("busScheduleId",busScheduleId)
                 startActivity(intent)
             }
         }
         return returnVal
     }
 
-    private class ItemSelectedListener(context: Context,view1:View) :AdapterView.OnItemSelectedListener {
+    class ItemSelectedListener(context: Context,view1:View) :AdapterView.OnItemSelectedListener {
         val context = context
         val view1 = view1
         var busScheduleId = 1
@@ -144,18 +146,17 @@ class MainActivity : AppCompatActivity() {
            var minute = ""
 
            while (cursor2.moveToNext()) {
-               for(i in 1 until 24) {
+               for(i in 1 until 25) {
                    val clock = "o" + i.toString()
                    minute = ""
                    val idxminute:Int? = cursor2.getColumnIndex(clock)
                    minute = idxminute?.let { cursor2.getString(it) }.toString()
-                   if (minute != null) {
-                       minutes.add(minute)
-                   }
+                   minutes.add(minute)
+
                }
            }
-
-           for (i in  firstTrainTime until (lastTrainTime + 1) ) {
+            Log.i("test", minutes.toString())
+           for (i in  firstTrainTime until (lastTrainTime +1) ) {
                val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                inflater.inflate(R.layout.output_layout, tableLayout)
                val tr = tableLayout.getChildAt(count) as TableRow
@@ -163,6 +164,7 @@ class MainActivity : AppCompatActivity() {
                tvHour.setText(i.toString())
                val evMinute = ((tr.getChildAt(1)) as TextView)
                val tvminute = tableLayout.findViewById<TextView>(R.id.tvminute)
+               Log.i("test", i.toString())
                tvminute.setText(minutes[i])
                tvminute.setId(ViewCompat.generateViewId())
                count++
