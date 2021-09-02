@@ -38,6 +38,7 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
         tvTitle.setOnItemSelectedListener(ItemSelectedListener(context, view1,busScheduleId))
         Log.i("test1",editTextIds.toString())
     }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.delete_option,menu)
         return true

@@ -3,7 +3,6 @@ package com.websarva.wings.android.busschedulemaker
 import android.content.Context
 import android.content.Intent
 import android.database.DatabaseUtils
-import android.database.sqlite.SQLiteDatabase
 import android.os.Bundle
 import android.util.Log
 import android.view.*
@@ -24,6 +23,11 @@ class MainActivity : AppCompatActivity() {
         tvTitle.setOnItemSelectedListener(ItemSelectedListener(context,view1))
     }
 
+    override fun onRestart() {
+        super.onRestart()
+        reload()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_options_list,menu)
         return true
@@ -35,12 +39,13 @@ class MainActivity : AppCompatActivity() {
             R.id.new_schedule_item -> {
                 val intent = Intent(this@MainActivity,NewSchedule::class.java)
                 startActivity(intent)
+
             }
             R.id.edit_item -> {
                 val id = findViewById<TextView>(R.id.tvIdItem)
                 if(id != null){
                     val intent = Intent(this@MainActivity,EditSchedule::class.java)
-                startActivity(intent)
+                    startActivity(intent)
                 }else{
                     Toast.makeText(this@MainActivity,R.string.errormessage4,Toast.LENGTH_SHORT).show()
                 }
@@ -157,4 +162,12 @@ class MainActivity : AppCompatActivity() {
            }
        }
    }
+    private fun reload() {
+        val intent = intent
+        overridePendingTransition(0, 0)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
+        finish()
+        overridePendingTransition(0, 0)
+        startActivity(intent)
+    }
 }
