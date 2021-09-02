@@ -13,7 +13,6 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
 
 class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListener {
-
     private val _helper = DatabaseHelper(this@EditSchedule)
     var editTextIds: MutableList<Int> = mutableListOf()
     var intFTT = 0
@@ -36,7 +35,6 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
         sp.call3()
         val tvTitle = findViewById<Spinner>(R.id.sptitle)
         tvTitle.setOnItemSelectedListener(ItemSelectedListener(context, view1,busScheduleId))
-        Log.i("test1",editTextIds.toString())
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -166,7 +164,6 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
             stmt.bindLong(5, intFTT.toLong())
             stmt.bindLong(6, intLTT.toLong())
             val executeInsert = stmt.executeInsert()
-
             val minutes: MutableList<String> = mutableListOf()
             var count = 0
             for (i in intFTT until (intLTT + 1)) {

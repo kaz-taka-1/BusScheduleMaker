@@ -97,8 +97,6 @@ class MainActivity : AppCompatActivity() {
                    id = cursor1.getString(idnum)
                    titles.add(title)
                    ids.add(id)
-                   Log.i("table", titles.toString())
-                   Log.i("table", ids.toString())
                }
            }
            val adapter = SpinnerAdapter(context, R.layout.spinner_item, ids,titles);
@@ -155,7 +153,6 @@ class MainActivity : AppCompatActivity() {
                tvHour.setText(i.toString())
                val evMinute = ((tr.getChildAt(1)) as TextView)
                val tvminute = tableLayout.findViewById<TextView>(R.id.tvminute)
-               Log.i("test", i.toString())
                tvminute.setText(minutes[i])
                tvminute.setId(ViewCompat.generateViewId())
                count++
