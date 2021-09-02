@@ -37,15 +37,20 @@ class MainActivity : AppCompatActivity() {
             R.id.new_schedule_item -> {
                 /*val dialogFragment = NewScheduleDialog()
                 dialogFragment.show(supportFragmentManager,"NewScheduleDialog")*/
+
                 val intent = Intent(this@MainActivity,NewSchedule::class.java)
                 startActivity(intent)
             }
             R.id.edit_item -> {
                 val id = findViewById<TextView>(R.id.tvIdItem)
+                if(id != null){
                 //val busScheduleId = id.text.toString().toInt()
-                val intent = Intent(this@MainActivity,EditSchedule::class.java)
+                    val intent = Intent(this@MainActivity,EditSchedule::class.java)
                 //intent.putExtra("busScheduleId",busScheduleId)
                 startActivity(intent)
+                }else{
+                    Toast.makeText(this@MainActivity,R.string.errormessage4,Toast.LENGTH_SHORT).show()
+                }
             }
         }
         return returnVal

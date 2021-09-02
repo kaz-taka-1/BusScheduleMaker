@@ -21,4 +21,5 @@
     <string name="errormessage3">運行時間に誤りがあります。\n運行時間を確認してください。</string>
     <string name="delete">消去</string>
     <string name="delete_title">次の時刻表を消去してもよろしいですか？</string>
+    <string name="errormessage4">編集できるデータがありません。</string>
 </resources>

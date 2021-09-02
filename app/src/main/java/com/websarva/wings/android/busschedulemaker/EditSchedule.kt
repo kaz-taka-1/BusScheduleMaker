@@ -193,10 +193,7 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
             finish()
         }
     }
-    inner class ItemSelectedListener(context: Context, view1:View,busScheduleId:Int) :AdapterView.OnItemSelectedListener {
-        val context = context
-        val view1 = view1
-        var busScheduleId = busScheduleId
+    inner class ItemSelectedListener(val context: Context, val view1: View, var busScheduleId: Int) :AdapterView.OnItemSelectedListener {
 
         override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
 
@@ -215,11 +212,9 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
     }
 
 
-    open inner class spcall(context: Context, view1:View){
-        val context = context
+    open inner class spcall(val context: Context, val view1: View){
         val _helper = DatabaseHelper(context)
         val db = _helper.writableDatabase
-        val view1 = view1
         var title =""
         var destination = ""
         var busStop = ""
