@@ -40,11 +40,11 @@ class MainActivity : AppCompatActivity() {
                 val intent = Intent(this@MainActivity,NewSchedule::class.java)
                 startActivity(intent)
             }
-            R.id.edit -> {
+            R.id.edit_item -> {
                 val id = findViewById<TextView>(R.id.tvIdItem)
-                val busScheduleId = id.text.toString().toInt()
+                //val busScheduleId = id.text.toString().toInt()
                 val intent = Intent(this@MainActivity,EditSchedule::class.java)
-                intent.putExtra("busScheduleId",busScheduleId)
+                //intent.putExtra("busScheduleId",busScheduleId)
                 startActivity(intent)
             }
         }

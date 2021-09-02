@@ -19,4 +19,6 @@
     <string name="errormessage1">空欄があります。</string>
     <string name="errormessage2">運行時間に誤りがあります。\n入力可能な範囲は1~24です。</string>
     <string name="errormessage3">運行時間に誤りがあります。\n運行時間を確認してください。</string>
+    <string name="delete">消去</string>
+    <string name="delete_title">次の時刻表を消去してもよろしいですか？</string>
 </resources>

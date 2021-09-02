@@ -164,6 +164,7 @@
                 android:layout_marginRight="56dp"
                 android:text="戻る"
                 />
+
             <Button
                 android:id="@+id/btnSave"
                 android:layout_width="wrap_content"

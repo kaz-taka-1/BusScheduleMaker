@@ -1,17 +1,18 @@
 package com.websarva.wings.android.busschedulemaker
 
 import android.content.Context
+import android.content.Intent
 import android.database.DatabaseUtils
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.*
 import androidx.core.view.ViewCompat
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.FragmentActivity
 
-class EditSchedule : AppCompatActivity() {
+class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListener {
 
     private val _helper = DatabaseHelper(this@EditSchedule)
     var editTextIds: MutableList<Int> = mutableListOf()
@@ -37,10 +38,43 @@ class EditSchedule : AppCompatActivity() {
         tvTitle.setOnItemSelectedListener(ItemSelectedListener(context, view1,busScheduleId))
         Log.i("test1",editTextIds.toString())
     }
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.delete_option,menu)
+        return true
+    }
 
     override fun onDestroy() {
         _helper.close()
         super.onDestroy()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val tvtitle = findViewById<TextView>(R.id.tvTitleItem)
+        val title = tvtitle.text.toString()
+        var returnVal =true
+        when(item.itemId){
+            R.id.delete_item -> {
+                val dialogFragment = DeleteDialogFlagment(title)
+                dialogFragment.show(supportFragmentManager,"DeleteScheduleDialog")
+            }
+        }
+        return returnVal
+    }
+    override fun onDialogPositiveClick(dialog: DialogFragment) {
+        val id = findViewById<TextView>(R.id.tvIdItem)
+        val _id = id.text.toString().toLong()
+        val db = _helper.writableDatabase
+        val sqlDelete = "DELETE FROM busschedules WHERE _id =?"
+        var stmt = db.compileStatement(sqlDelete)
+        stmt.bindLong(1,_id)
+        stmt.executeUpdateDelete()
+        val sqlDelete2 = "DELETE FROM timetable WHERE _id =?"
+        var stmt2 = db.compileStatement(sqlDelete2)
+        stmt2.bindLong(1,_id)
+        stmt2.executeUpdateDelete()
+        Toast.makeText(this,"消去しました",Toast.LENGTH_SHORT).show()
+    }
+    override fun onDialogNegativeClick(dialog: DialogFragment) {
     }
 
     //時刻入力欄作成ボタンをクリックした時の処理の記述
