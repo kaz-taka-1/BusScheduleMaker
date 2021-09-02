@@ -74,6 +74,7 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
         stmt2.bindLong(1,_id)
         stmt2.executeUpdateDelete()
         Toast.makeText(this,"消去しました",Toast.LENGTH_SHORT).show()
+        finish()
     }
     override fun onDialogNegativeClick(dialog: DialogFragment) {
     }
