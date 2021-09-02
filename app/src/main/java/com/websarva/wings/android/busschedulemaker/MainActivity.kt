@@ -24,29 +24,22 @@ class MainActivity : AppCompatActivity() {
         tvTitle.setOnItemSelectedListener(ItemSelectedListener(context,view1))
     }
 
-    //オプションメニューの埋め込み
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_options_list,menu)
         return true
     }
 
-    //メニューアイテムのクリック
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         var returnVal =true
         when(item.itemId){
             R.id.new_schedule_item -> {
-                /*val dialogFragment = NewScheduleDialog()
-                dialogFragment.show(supportFragmentManager,"NewScheduleDialog")*/
-
                 val intent = Intent(this@MainActivity,NewSchedule::class.java)
                 startActivity(intent)
             }
             R.id.edit_item -> {
                 val id = findViewById<TextView>(R.id.tvIdItem)
                 if(id != null){
-                //val busScheduleId = id.text.toString().toInt()
                     val intent = Intent(this@MainActivity,EditSchedule::class.java)
-                //intent.putExtra("busScheduleId",busScheduleId)
                 startActivity(intent)
                 }else{
                     Toast.makeText(this@MainActivity,R.string.errormessage4,Toast.LENGTH_SHORT).show()
@@ -56,13 +49,10 @@ class MainActivity : AppCompatActivity() {
         return returnVal
     }
 
-    class ItemSelectedListener(context: Context,view1:View) :AdapterView.OnItemSelectedListener {
-        val context = context
-        val view1 = view1
+    class ItemSelectedListener(val context: Context, val view1: View) :AdapterView.OnItemSelectedListener {
         var busScheduleId = 1
 
         override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-
             val tvid = view?.findViewById<TextView>(R.id.tvIdItem)
             val id = tvid?.text.toString()
             busScheduleId = id.toInt()
@@ -71,18 +61,14 @@ class MainActivity : AppCompatActivity() {
             sp.call1(busScheduleId)
             sp.call2(busScheduleId)
         }
-
-
         override fun onNothingSelected(parent: AdapterView<*>) {
         }
     }
 
 
-   open class spcall(context: Context,view1:View){
-       val context = context
+   open class spcall(val context: Context, val view1: View){
        val _helper = DatabaseHelper(context)
        val db = _helper.writableDatabase
-       val view1 = view1
        var destination = ""
        var busStop = ""
        var firstTrainTime = 0
@@ -116,8 +102,6 @@ class MainActivity : AppCompatActivity() {
        }
 
        open fun call1(busScheduleId:Int) {
-           //Log.i("table", busScheduleId.toString())
-           //Log.i("table","call1")
            var sql = "SELECT * FROM busschedules WHERE _id = ${busScheduleId}"
            val cursor = db.rawQuery(sql, null)
            while (cursor.moveToNext()) {
@@ -137,8 +121,6 @@ class MainActivity : AppCompatActivity() {
        }
 
        open fun call2(busScheduleId:Int){
-           //Log.i("table","call2")
-           val view2 = view1
            val tableLayout = view1.findViewById<View>(R.id.timetable) as ViewGroup
            tableLayout.removeAllViews()
            var count = 0
@@ -160,7 +142,6 @@ class MainActivity : AppCompatActivity() {
 
                }
            }
-            Log.i("test", minutes.toString())
            for (i in  firstTrainTime until (lastTrainTime +1) ) {
                val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
                inflater.inflate(R.layout.output_layout, tableLayout)
@@ -175,9 +156,5 @@ class MainActivity : AppCompatActivity() {
                count++
            }
        }
-
    }
-
-
-
 }

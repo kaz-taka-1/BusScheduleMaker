@@ -77,7 +77,6 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
     override fun onDialogNegativeClick(dialog: DialogFragment) {
     }
 
-    //時刻入力欄作成ボタンをクリックした時の処理の記述
     private inner class screencreate() : View.OnClickListener {
         override fun onClick(view: View?) {
             val etTitle = findViewById<EditText>(R.id.title)
@@ -150,8 +149,6 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
             val firstTrainTime = etFirstTrainTime.text.toString().toLong()
             val etLastTrainTime = findViewById<EditText>(R.id.last_train_time)
             val lastTrainTime = etLastTrainTime.text.toString().toLong()
-
-            Log.i("test3",editTextIds.toString())
             val db = _helper.writableDatabase
             val sqlDelete = "DELETE FROM busschedules WHERE _id =?"
             var stmt = db.compileStatement(sqlDelete)
@@ -189,14 +186,11 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
                 count++
             }
             stmt2.executeInsert()
-
             finish()
         }
     }
     inner class ItemSelectedListener(val context: Context, val view1: View, var busScheduleId: Int) :AdapterView.OnItemSelectedListener {
-
         override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-
             val tvid = view?.findViewById<TextView>(R.id.tvIdItem)
             val id = tvid?.text.toString()
             busScheduleId = id.toInt()
@@ -206,11 +200,9 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
             sp.call2(busScheduleId)
         }
 
-
         override fun onNothingSelected(parent: AdapterView<*>) {
         }
     }
-
 
     open inner class spcall(val context: Context, val view1: View){
         val _helper = DatabaseHelper(context)
@@ -222,9 +214,7 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
         var lastTrainTime = 0
         var busScheduleId = 1
         fun call3(){
-            //Log.i("table","call3")
             val recodeCount = DatabaseUtils.queryNumEntries(db, "busschedules")
-            val splist2: MutableList<MutableMap<String,String>> = mutableListOf()
             var title = ""
             var id =""
             val titles:MutableList<String> = mutableListOf()
@@ -239,8 +229,6 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
                     id = cursor1.getString(idnum)
                     titles.add(title)
                     ids.add(id)
-                    Log.i("table", titles.toString())
-                    Log.i("table", ids.toString())
                 }
             }
             val adapter = SpinnerAdapter(context, R.layout.spinner_item, ids,titles);
@@ -249,8 +237,6 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
         }
 
         open fun call1(busScheduleId:Int) {
-            //Log.i("table", busScheduleId.toString())
-            //Log.i("table","call1")
             var sql = "SELECT * FROM busschedules WHERE _id = ${busScheduleId}"
             val cursor = db.rawQuery(sql, null)
             while (cursor.moveToNext()) {
@@ -280,8 +266,6 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
         }
 
         open fun call2(busScheduleId:Int){
-            //Log.i("table","call2")
-            val view2 = view1
             val tableLayout = view1.findViewById<View>(R.id.timetable) as ViewGroup
             tableLayout.removeAllViews()
             var count = 0
@@ -318,9 +302,6 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
                 tvminute.setId(editTextIds[count])
                 count++
             }
-            Log.i("test2",editTextIds.toString())
         }
-
-
     }
 }
