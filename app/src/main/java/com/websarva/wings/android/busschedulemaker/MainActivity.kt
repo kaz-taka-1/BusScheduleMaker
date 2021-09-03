@@ -12,6 +12,7 @@ import androidx.core.view.ViewCompat
 
 
 class MainActivity : AppCompatActivity() {
+    private val _helper = DatabaseHelper(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -31,6 +32,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_options_list,menu)
         return true
+    }
+    override fun onDestroy() {
+        _helper.close()
+        super.onDestroy()
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -54,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         return returnVal
     }
 
-    class ItemSelectedListener(val context: Context, val view1: View) :AdapterView.OnItemSelectedListener {
+    inner class ItemSelectedListener(val context: Context, val view1: View) :AdapterView.OnItemSelectedListener {
         var busScheduleId = 1
 
         override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
@@ -71,8 +76,8 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-   open class spcall(val context: Context, val view1: View){
-       val _helper = DatabaseHelper(context)
+   open inner class spcall(val context: Context, val view1: View){
+
        val db = _helper.writableDatabase
        var destination = ""
        var busStop = ""
@@ -109,6 +114,7 @@ class MainActivity : AppCompatActivity() {
            val adapter = SpinnerAdapter(context, R.layout.spinner_item, ids,titles);
            val tvTitle = view1.findViewById<Spinner>(R.id.tvTitle)
            tvTitle.adapter = adapter
+
        }
 
        open fun call1(busScheduleId:Int) {
@@ -164,6 +170,7 @@ class MainActivity : AppCompatActivity() {
                tvminute.setId(ViewCompat.generateViewId())
                count++
            }
+
        }
    }
     private fun reload() {
