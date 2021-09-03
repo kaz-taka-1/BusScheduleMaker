@@ -9,13 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.BusScheduleMaker">
-        <activity android:name=".EditSchedule"></activity>
-        <activity android:name=".NewSchedule" />
-        <activity android:name=".new_bussuhedule" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".EditSchedule"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".NewSchedule"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
