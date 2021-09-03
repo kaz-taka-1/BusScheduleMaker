@@ -48,7 +48,7 @@ class NewSchedule : AppCompatActivity() {
                 btnSave.isEnabled = false
             }else{
                 if(0 < firstTrainTime.toInt() && lastTrainTime.toInt() < 25) {
-                    if (firstTrainTime.toInt() < lastTrainTime.toInt()) {
+                    if (firstTrainTime.toInt() <= lastTrainTime.toInt()) {
                         intFTT = firstTrainTime.toInt()
                         intLTT = lastTrainTime.toInt()
                         tableLayout.removeAllViews()

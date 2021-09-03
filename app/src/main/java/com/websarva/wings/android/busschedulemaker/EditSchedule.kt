@@ -96,7 +96,7 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
                 btnSave.isEnabled = false
             }else{
                 if(0 < firstTrainTime.toInt() && lastTrainTime.toInt() < 25) {
-                    if (firstTrainTime.toInt() < lastTrainTime.toInt()) {
+                    if (firstTrainTime.toInt() <= lastTrainTime.toInt()) {
                         intFTT = firstTrainTime.toInt()
                         intLTT = lastTrainTime.toInt()
                         tableLayout.removeAllViews()
@@ -212,13 +212,20 @@ class EditSchedule : AppCompatActivity(), DeleteDialogFlagment.NoticeDialogListe
         var firstTrainTime = 0
         var lastTrainTime = 0
         var busScheduleId = 1
+        var maxrecode = 1
         fun call3(){
-            val recodeCount = DatabaseUtils.queryNumEntries(db, "busschedules")
+            val recodeCount = "SELECT * FROM busschedules WHERE _id = (SELECT MAX(_id) FROM busschedules)"
+            val cursor =db.rawQuery(recodeCount,null)
+            while(cursor.moveToNext()) {
+                val idmax = cursor.getColumnIndex("_id")
+                val max = cursor.getInt(idmax)
+                maxrecode = max
+            }
             var title = ""
             var id =""
             val titles:MutableList<String> = mutableListOf()
             val ids:MutableList<String> = mutableListOf()
-            for (i in 1 until recodeCount+1) {
+            for (i in 1 until maxrecode+1) {
                 val sql1 = "SELECT * FROM busschedules WHERE _id = ${i}"
                 val cursor1 =db.rawQuery(sql1,null)
                 while(cursor1.moveToNext()) {
