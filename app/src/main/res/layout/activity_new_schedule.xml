@@ -120,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="36dp"
-            android:text="時刻表リセット"/>
+            android:text="時刻入力欄作成"/>
 
     </LinearLayout>
     <TableLayout
