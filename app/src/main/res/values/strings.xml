@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">BusScheduleMaker</string>
+    <string name="app_name">バス時刻表ツクール</string>
     <string name="tv_edit">編集</string>
     <string name="tv_new_schedule">新規時刻表</string>
     <string name="tv_schedule_index">時刻表一覧</string>
