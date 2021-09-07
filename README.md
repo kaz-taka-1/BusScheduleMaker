@@ -63,7 +63,7 @@ https://play.google.com/store/apps/details?id=com.websarva.wings.android.bussche
 |title               | string     |                                 |
 |destination         | string     |                                 |
 |firstTrainTime      | long       |                                 |
-|lastTrainTime       | long       | null: false , foreign_key: true |
+|lastTrainTime       | long       |                                 |
 
 
 ## Preparations
