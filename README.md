@@ -55,7 +55,6 @@ https://play.google.com/store/apps/details?id=com.websarva.wings.android.bussche
 <img src="https://user-images.githubusercontent.com/82791666/132304374-df5b93b6-fff5-40e6-9d72-620adea29f19.jpg" width="300">  <img src="https://user-images.githubusercontent.com/82791666/132304391-9149a568-e7a3-4b75-85fc-9405c0595a13.jpg" width="300">  <img src="https://user-images.githubusercontent.com/82791666/132304418-1ddd50b9-41d3-43ee-b80f-3941d8daacbf.jpg" width="300">
 
 ## データベース設計
-## テーブル設計
 ### busschedulesテーブル
 | Column             | Type       | Options                         |
 | ------------------ | ---------- | ------------------------------- |
