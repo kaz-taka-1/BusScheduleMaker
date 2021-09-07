@@ -46,10 +46,10 @@ https://play.google.com/store/apps/details?id=com.websarva.wings.android.bussche
 
 ## 画面
 ## トップページ
-<img src="https://user-images.githubusercontent.com/82791666/132287635-0d34b5ba-02be-4194-bc44-144d5c9004df.jpg" width="300">　　<img src="https://user-images.githubusercontent.com/82791666/132288710-43166dea-716b-4410-98f9-432ae98cf46e.jpg" width="300">　　<img src="https://user-images.githubusercontent.com/82791666/132287703-592a99ad-708a-438a-89c0-86cf7213987a.jpg" width="300">
+<img src="https://user-images.githubusercontent.com/82791666/132300707-2169471b-4b5c-48dd-a8ee-2e66e7f7661b.jpg" width="300"> <img src="https://user-images.githubusercontent.com/82791666/132302779-005d5ac1-5ba7-4619-9a5a-2a6952e54cdf.jpg" width="300"> <img src="https://user-images.githubusercontent.com/82791666/132301541-a4ba25fb-a190-4d3f-afee-021cafd55035.jpg" width="300">
 
 ## 編集画面
-<img src="https://user-images.githubusercontent.com/82791666/132289055-f8a55be4-f913-400b-b323-a5ae2588fc07.jpg" width="300">　　<img src="https://user-images.githubusercontent.com/82791666/132289209-b243212e-a556-413d-b120-69355761adb2.jpg" width="300">　　<img src="https://user-images.githubusercontent.com/82791666/132289332-0c230f47-e202-4e1c-a921-9a498cbc59de.jpg" width="300">
+<img src="https://user-images.githubusercontent.com/82791666/132300813-e5bd130b-1861-4cbf-9232-49e530576d36.jpg" width="300"> <img src="https://user-images.githubusercontent.com/82791666/132300831-5d5b90f0-9ff7-41c2-afc5-22214e9a0c68.jpg" width="300"> <img src="https://user-images.githubusercontent.com/82791666/132300849-6e608fb1-c6dd-4256-b2ac-bd2c146b32b8.jpg" width="300">
 
 # 使用言語・技術
 - kotlin
