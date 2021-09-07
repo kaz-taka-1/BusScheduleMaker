@@ -66,7 +66,7 @@ https://play.google.com/store/apps/details?id=com.websarva.wings.android.bussche
 |lastTrainTime       | long       |                                 |
 
 
-## timetableテーブル
+### timetableテーブル
 | Column             | Type        | Options                  |
 | ------------------ | ----------- | ------------------------ |
 | _id                | long        | NTEGER PRIMARY KEY       |
