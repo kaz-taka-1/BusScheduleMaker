@@ -56,7 +56,7 @@ https://play.google.com/store/apps/details?id=com.websarva.wings.android.bussche
 
 ## データベース設計
 ## テーブル設計
-### テーブル
+### busschedulesテーブル
 | Column             | Type       | Options                         |
 | ------------------ | ---------- | ------------------------------- |
 |_id                 | long       | INTEGER PRIMARY KEY             |
@@ -66,7 +66,7 @@ https://play.google.com/store/apps/details?id=com.websarva.wings.android.bussche
 |lastTrainTime       | long       |                                 |
 
 
-## Preparations
+## timetableテーブル
 | Column             | Type        | Options                  |
 | ------------------ | ----------- | ------------------------ |
 | _id                | long        | NTEGER PRIMARY KEY       |
