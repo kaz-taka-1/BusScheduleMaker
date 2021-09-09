@@ -19,7 +19,7 @@ class NewSchedule : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_new_schedule)
         val bt1 = findViewById<Button>(R.id.bt1)
-        bt1.setOnClickListener(screencreate())
+        bt1.setOnClickListener(viewset())
         val btnSave = findViewById<Button>(R.id.btnSave)
         btnSave.setOnClickListener(onSaveButtonClick())
         val btnBack = findViewById<Button>(R.id.btnBack)
@@ -29,7 +29,7 @@ class NewSchedule : AppCompatActivity() {
         _helper.close()
         super.onDestroy()
     }
-    open inner class screencreate(): View.OnClickListener{
+    open inner class viewset(): View.OnClickListener{
         override fun onClick(view: View?) {
             val etTitle = findViewById<EditText>(R.id.title)
             val title = etTitle.getText().toString()

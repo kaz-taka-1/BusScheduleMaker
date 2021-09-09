@@ -18,8 +18,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val context = this
         val view1 = findViewById<View>(R.id.main)
-        val sp = spcall(context,view1)
-        sp.call3()
+        //val viewset = NewSchedule.viewset()
+        val viewset = viewset(context,view1)
+        viewset.call3()
         val tvTitle = findViewById<Spinner>(R.id.tvTitle)
         tvTitle.setOnItemSelectedListener(ItemSelectedListener(context,view1))
     }
@@ -66,7 +67,7 @@ class MainActivity : AppCompatActivity() {
             val tvid = view?.findViewById<TextView>(R.id.tvIdItem)
             val id = tvid?.text.toString()
             busScheduleId = id.toInt()
-            val sp = spcall(context,view1)
+            val sp = viewset(context,view1)
             sp.busScheduleId
             sp.call1(busScheduleId)
             sp.call2(busScheduleId)
@@ -76,7 +77,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-   open inner class spcall(val context: Context, val view1: View){
+   open inner class viewset(val context: Context, val view1: View){
 
        val db = _helper.writableDatabase
        var destination = ""
